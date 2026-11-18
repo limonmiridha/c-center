@@ -80,23 +80,23 @@ const programsData: Program[] = [
             "সমস্যা সমাধান ও লজিক বিল্ডিং সেশন",
         ],
     },
-    {
-        id: "curiosity-stem-club",
-        category: "skill",
-        badge: "সৃজনশীল দক্ষতা",
-        badgeColor: "gold",
-        title: "অন্বেষণ কিউরিওসিটি ও কম্পিউটার বেসিকস",
-        targetGroup: "যেকোনো শ্রেণির আগ্রহী শিক্ষার্থী",
-        description:
-            "আধুনিক প্রযুক্তির সঠিক ব্যবহার, প্রেজেন্টেশন স্কিল, ক্রিটিক্যাল থিংকিং এবং সমস্যা সমাধানের দক্ষতা তৈরির সাপ্তাহিক কর্মশালা।",
-        schedule: "প্রতি শুক্রবার (সকাল ৯:৩০ – ১১:৩০)",
-        batchSize: "সর্বোচ্চ ১৫ জন শিক্ষার্থী",
-        highlights: [
-            "কম্পিউটার ফান্ডামেন্টাল ও অফিস অ্যাপ্লিকেশন",
-            "পাবলিক স্পিকিং ও দলগত প্রজেক্ট প্রেজেন্টেশন",
-            "বাস্তব সমস্যা সমাধানের কেস স্টাডি",
-        ],
-    },
+    // {
+    //     id: "curiosity-stem-club",
+    //     category: "skill",
+    //     badge: "সৃজনশীল দক্ষতা",
+    //     badgeColor: "gold",
+    //     title: "অন্বেষণ কিউরিওসিটি ও কম্পিউটার বেসিকস",
+    //     targetGroup: "যেকোনো শ্রেণির আগ্রহী শিক্ষার্থী",
+    //     description:
+    //         "আধুনিক প্রযুক্তির সঠিক ব্যবহার, প্রেজেন্টেশন স্কিল, ক্রিটিক্যাল থিংকিং এবং সমস্যা সমাধানের দক্ষতা তৈরির সাপ্তাহিক কর্মশালা।",
+    //     schedule: "প্রতি শুক্রবার (সকাল ৯:৩০ – ১১:৩০)",
+    //     batchSize: "সর্বোচ্চ ১৫ জন শিক্ষার্থী",
+    //     highlights: [
+    //         "কম্পিউটার ফান্ডামেন্টাল ও অফিস অ্যাপ্লিকেশন",
+    //         "পাবলিক স্পিকিং ও দলগত প্রজেক্ট প্রেজেন্টেশন",
+    //         "বাস্তব সমস্যা সমাধানের কেস স্টাডি",
+    //     ],
+    // },
 ];
 
 export default function BatchSection() {
@@ -108,10 +108,10 @@ export default function BatchSection() {
             : programsData.filter((item) => item.category === activeTab);
 
     return (
-        <section id="programs" className="py-20 bg-paper border-b border-line">
+        <section id="programs" className="py-10 md:py-20 bg-paper border-b border-line">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header + Filter Tabs */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-line">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                     <div className="max-w-2xl space-y-3">
                         <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-green">
                             <span className="w-6 h-[2px] bg-green" />
@@ -161,7 +161,7 @@ export default function BatchSection() {
                 </div>
 
                 {/* Programs Grid */}
-                <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-7">
+                <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-7">
                     {filteredPrograms.map((program) => {
                         const badgeStyles = {
                             navy: "bg-navy/10 text-navy border-navy/15",
