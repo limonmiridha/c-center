@@ -1,26 +1,68 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand Primary & Accents (From Logo) */
+  --color-brand-navy: #173B56;       /* Primary: গভীর বিশ্বাস ও আভিজাত্য */
+  --color-brand-navy-dark: #0F283B;  /* Hover state */
+  --color-brand-gold: #F2B84B;       /* Secondary: কৌতূহল ও উষ্ণতা */
+  --color-brand-gold-hover: #E0A334;
+  --color-brand-green: #269B83;      /* Accent: বৃদ্ধি ও সাফল্য */
+
+  /* Neutral Surfaces & Text (Editorial Warmth) */
+  --color-bg-primary: #FAF9F6;       /* Warm Off-White (চোখের আরামের জন্য) */
+  --color-bg-surface: #FFFFFF;       /* Pure White Cards */
+  --color-text-main: #111827;        /* Crisp Dark Slate */
+  --color-text-muted: #4B5563;       /* Secondary text */
+  --color-border-subtle: #E5E2DC;    /* Warm subtle divider */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-navy: var(--color-brand-navy);
+  --color-navy-dark: var(--color-brand-navy-dark);
+  --color-gold: var(--color-brand-gold);
+  --color-gold-hover: var(--color-brand-gold-hover);
+  --color-green: var(--color-brand-green);
+  --color-paper: var(--color-bg-primary);
+  --color-surface: var(--color-bg-surface);
+  --color-ink: var(--color-text-main);
+  --color-muted: var(--color-text-muted);
+  --color-line: var(--color-border-subtle);
+  --font-sans: var(--font-noto), var(--font-jakarta), sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-main);
+}
+
+
+
+/* Mobile navigation */
+
+.mobile-menu summary {
+  list-style: none;
+}
+
+.mobile-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.mobile-dropdown {
+  display: none;
+}
+
+.mobile-menu[open] .mobile-dropdown {
+  display: block;
+}
+
+.mobile-menu .menu-close {
+  display: none;
+}
+
+.mobile-menu[open] .menu-open {
+  display: none;
+}
+
+.mobile-menu[open] .menu-close {
+  display: block;
 }
