@@ -1,14 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Phone, MapPin, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 
 const navLinks = [
     { name: "হোম", href: "/" },
     { name: "আমাদের দর্শন", href: "/about" },
-    { name: "প্রোগ্রাম ও ব্যাচ", href: "/programs" },
+    { name: "ব্যাচ", href: "/batch" },
     // { name: "রিসোর্স", href: "/resources" },
     { name: "নোটিশ", href: "/notices" },
 ];
@@ -34,11 +35,11 @@ export default function HeaderG() {
                     </div>
                     <div className="flex items-center gap-4">
                         <a
-                            href="tel:+8801700000000"
+                            href="tel:+8801790153927"
                             className="inline-flex items-center gap-1.5 hover:text-[var(--color-brand-gold)] transition-colors"
                         >
                             <Phone className="w-3.5 h-3.5 text-[var(--color-brand-gold)]" />
-                            <span className="font-medium tracking-wide">+৮৮০ ১৭০০-০০০০০০</span>
+                            <span className="font-medium tracking-wide">+৮৮০ ১৭৯০-১৫৩৯২৭</span>
                         </a>
                     </div>
                 </div>
@@ -49,40 +50,12 @@ export default function HeaderG() {
                 <div className="flex items-center justify-between h-20">
                     {/* Brand Logo & Wordmark */}
                     <Link href="/" className="flex items-center gap-3 group">
-                        {/* Minimalist Book + Compass SVG Mark */}
-                        <div className="w-10 h-10 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border-subtle)] flex items-center justify-center group-hover:border-[var(--color-brand-navy)] transition-colors">
-                            <svg
-                                viewBox="0 0 40 40"
-                                className="w-7 h-7"
-                                fill="none"
-                                xmlns="http://w3.org"
-                            >
-                                {/* Open Book Base */}
-                                <path
-                                    d="M6 13C11 13 16 14.5 20 17.5C24 14.5 29 13 34 13V29C29 29 24 30.5 20 33C16 30.5 11 29 6 29V13Z"
-                                    fill="#173B56"
-                                />
-                                {/* Compass Needle */}
-                                <path d="M20 7L23.5 18L20 29L16.5 18L20 7Z" fill="#F2B84B" />
-                                <circle cx="20" cy="18" r="2" fill="#FFFFFF" />
-                                {/* Growth Spark */}
-                                <path
-                                    d="M20 3V5M14 6L15.5 7.5M26 6L24.5 7.5"
-                                    stroke="#269B83"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                />
-                            </svg>
-                        </div>
-
-                        <div className="flex flex-col">
-                            <span className="text-xl font-extrabold tracking-tight text-[var(--color-brand-navy)] leading-none">
-                                ONNESHON
-                            </span>
-                            <span className="text-[11px] font-semibold tracking-[0.18em] text-[var(--color-brand-green)] uppercase mt-1">
-                                Learning Center
-                            </span>
-                        </div>
+                        <Image
+                            src="/images/logo-bn-hr.png"
+                            alt="Logo"
+                            width={200}
+                            height={40}
+                        />
                     </Link>
 
                     {/* Desktop Links */}
