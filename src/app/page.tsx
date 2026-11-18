@@ -6,6 +6,7 @@ import EarlyBirdOfferSection from "@/components/EarlyBirdOfferSection";
 import Hero from "@/components/Hero";
 import NoticesAndResources from "@/components/NoticesAndResources";
 import PhilosophySection from "@/components/PhilosophySection";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -16,7 +17,16 @@ export default function Home() {
       <PhilosophySection />
       <EarlyBirdOfferSection />
       <NoticesAndResources />
-      <AdmissionForm />
+      <Suspense
+        fallback={
+          <div className="bg-surface border border-line rounded-2xl p-10 text-center text-sm text-muted">
+            ভর্তি ফর্ম লোড হচ্ছে...
+          </div>
+        }
+      >
+
+        <AdmissionForm />
+      </Suspense>
       <ContactSection />
     </div>
   );

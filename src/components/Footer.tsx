@@ -3,7 +3,7 @@ import Link from "next/link";
 import { MapPin, Phone, Mail, ArrowUpRight } from "lucide-react";
 
 export default function Footer() {
-    const currentYear = new Date().getFullYear();
+
 
     return (
         <footer className="bg-navy text-white/85">
@@ -126,7 +126,7 @@ export default function Footer() {
                 {/* Bottom Copyright Strip */}
                 <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60">
                     <p>
-                        © {currentYear} অন্বেষণ লার্নিং সেন্টার (Onneshon Learning Center). সর্বস্বত্ব সংরক্ষিত।
+                        © 2027 অন্বেষণ লার্নিং সেন্টার (Onneshon Learning Center). সর্বস্বত্ব সংরক্ষিত।
                     </p>
                     <p>কৌতূহল থেকে উদ্ভাবন • বানারীপাড়া, বরিশাল</p>
                 </div>
