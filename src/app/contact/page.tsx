@@ -19,7 +19,7 @@ export const metadata = {
 
 export default function ContactPage() {
     return (
-        <main className="py-16 bg-paper min-h-screen">
+        <main className="py-8 md:py-16 bg-paper min-h-screen">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 
                 {/* Page Header */}

@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function AdmissionPage() {
     return (
-        <main className="py-16 bg-paper min-h-screen">
+        <main className="py-8 md:py-16 bg-paper min-h-screen">
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
 
                 {/* Page Header */}
@@ -18,7 +18,7 @@ export default function AdmissionPage() {
                     <span className="inline-block px-3.5 py-1 rounded-full bg-surface border border-line text-xs font-bold text-green">
                         নতুন সেশন ভর্তি চলছে
                     </span>
-                    <h1 className="text-3xl sm:text-4xl font-extrabold text-navy tracking-tight">
+                    <h1 className="text-2xl sm:text-4xl font-extrabold text-navy tracking-tight">
                         অন্বেষণ লার্নিং সেন্টারে স্বাগতম
                     </h1>
                     <p className="text-sm sm:text-base text-muted leading-relaxed">
@@ -59,7 +59,7 @@ export default function AdmissionPage() {
                         <Phone className="w-5 h-5 text-navy shrink-0 mt-0.5" />
                         <div className="text-xs sm:text-sm">
                             <p className="font-bold text-navy">ভর্তি হেল্পলাইন</p>
-                            <p className="text-muted mt-0.5">+৮৮০ ১৭০০-০০০০০০</p>
+                            <p className="text-muted mt-0.5">+৮৮০ ১৭৯০১৫৩৯২৭</p>
                         </div>
                     </div>
                 </div>

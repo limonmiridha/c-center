@@ -26,10 +26,7 @@ const batchOptions = [
         id: "hsc-ict-special",
         label: "এইচএসসি আইসিটি ও প্রোগ্রামিং ফাউন্ডেশন (১১শ — ১২শ শ্রেণি)",
     },
-    {
-        id: "curiosity-stem-club",
-        label: "অন্বেষণ কিউরিওসিটি ও কম্পিউটার বেসিকস (শুক্রবারের ব্যাচ)",
-    },
+
 ];
 
 export default function AdmissionForm() {

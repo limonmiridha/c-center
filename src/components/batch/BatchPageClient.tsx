@@ -37,14 +37,14 @@ const detailedPrograms: DetailedProgram[] = [
         category: "academic",
         badge: "একাডেমিক ফাউন্ডেশন",
         badgeStyle: "bg-navy/10 text-navy border-navy/20",
-        title: "জুনিয়র ফাউন্ডেশন ও মেধা বিকাশ ব্যাচ",
+        title: "জুনিয়র ফাউন্ডেশন ব্যাচ",
         targetClass: "৬ষ্ঠ — ৮ম শ্রেণি",
-        subjects: "গণিত, সাধারণ বিজ্ঞান, ইংরেজি ও আইসিটি বেসিক",
+        subjects: "গণিত, সাধারণ বিজ্ঞান, ইংরেজি, বাংলা ব্যাকরণ ও নির্মিতি এবং আইসিটি",
         description:
             "মাধ্যমিক পর্যায়ের শুরুতেই শিক্ষার্থীদের গণিত ও বিজ্ঞানের ভীতি দূর করে যুক্তিবোধ, প্রশ্ন করার সাহস এবং ইংরেজিতে সাবলীল দক্ষতা গড়ে তোলা হয়।",
         days: "শনি, সোম, বুধ ও বৃহস্পতিবার",
         timeSlots: ["বিকাল ৩:৩০ – ৫:০০", "সন্ধ্যা ৬:০০ – ৭:৩০"],
-        seatLimit: "প্রতি ব্যাচে সর্বোচ্চ ২০ জন",
+        seatLimit: "প্রতি ব্যাচে সর্বোচ্চ ২৫ জন",
         features: [
             "পাঠ্যবইয়ের প্রতিটি অধ্যায়ের মূল ধারণা সহজ উদাহরণে ব্যাখ্যা",
             "হাতে-কলমে বিজ্ঞানের ছোট প্রজেক্ট ও লজিক্যাল অনুশীলন",
@@ -64,7 +64,7 @@ const detailedPrograms: DetailedProgram[] = [
             "মুখস্থবিদ্যার বদলে সূত্রের গভীর প্রয়োগ, সৃজনশীল প্রশ্ন বিশ্লেষণ এবং বোর্ড পরীক্ষার জন্য আত্মবিশ্বাসী প্রস্তুতি নিশ্চিত করা হয়।",
         days: "রবি, মঙ্গল, বৃহস্পতি ও শুক্রবার",
         timeSlots: ["সকাল ৮:০০ – ১০:০০", "বিকাল ৪:০০ – ৬:০০"],
-        seatLimit: "প্রতি ব্যাচে সর্বোচ্চ ১৮ জন",
+        seatLimit: "প্রতি ব্যাচে সর্বোচ্চ ২৫ জন",
         features: [
             "পদার্থ, রসায়ন ও গণিতের জটিল বিষয়ের ভিজ্যুয়াল ব্যাখ্যা",
             "অধ্যায়ভিত্তিক সৃজনশীল (CQ) ও বহুনির্বাচনি (MCQ) মডেল টেস্ট",
@@ -92,26 +92,26 @@ const detailedPrograms: DetailedProgram[] = [
             "কোর্স শেষে পূর্ণাঙ্গ মডেল টেস্ট সিরিজ",
         ],
     },
-    {
-        id: "curiosity-stem-club",
-        category: "skill",
-        badge: "সৃজনশীল দক্ষতা",
-        badgeStyle: "bg-gold/25 text-navy border-gold/40",
-        title: "অন্বেষণ কিউরিওসিটি ও কম্পিউটার বেসিকস",
-        targetClass: "যেকোনো শ্রেণির আগ্রহী শিক্ষার্থী",
-        subjects: "কম্পিউটার ফান্ডামেন্টাল, ক্রিটিক্যাল থিংকিং ও প্রেজেন্টেশন",
-        description:
-            "আধুনিক প্রযুক্তির নিরাপদ ও সৃজনশীল ব্যবহার, সমস্যা সমাধানের দক্ষতা এবং দলগতভাবে কাজ করার মানসিকতা গড়ে তোলার সাপ্তাহিক কর্মশালা।",
-        days: "প্রতি শুক্রবার (সাপ্তাহিক ব্যাচ)",
-        timeSlots: ["সকাল ৯:৩০ – ১১:৩০"],
-        seatLimit: "প্রতি ব্যাচে সর্বোচ্চ ১৫ জন",
-        features: [
-            "মাইক্রোসফট অফিস, ইন্টারনেট ও ডিজিটাল লিটারেসি",
-            "গণিত অলিম্পিয়াড পাজল ও ব্রেইন টিজার সমাধান",
-            "পাবলিক স্পিকিং ও প্রেজেন্টেশন স্কিল চর্চা",
-            "বাস্তব জীবনের সমস্যা নিয়ে দলগত প্রজেক্ট তৈরি",
-        ],
-    },
+    // {
+    //     id: "curiosity-stem-club",
+    //     category: "skill",
+    //     badge: "সৃজনশীল দক্ষতা",
+    //     badgeStyle: "bg-gold/25 text-navy border-gold/40",
+    //     title: "অন্বেষণ কিউরিওসিটি ও কম্পিউটার বেসিকস",
+    //     targetClass: "যেকোনো শ্রেণির আগ্রহী শিক্ষার্থী",
+    //     subjects: "কম্পিউটার ফান্ডামেন্টাল, ক্রিটিক্যাল থিংকিং ও প্রেজেন্টেশন",
+    //     description:
+    //         "আধুনিক প্রযুক্তির নিরাপদ ও সৃজনশীল ব্যবহার, সমস্যা সমাধানের দক্ষতা এবং দলগতভাবে কাজ করার মানসিকতা গড়ে তোলার সাপ্তাহিক কর্মশালা।",
+    //     days: "প্রতি শুক্রবার (সাপ্তাহিক ব্যাচ)",
+    //     timeSlots: ["সকাল ৯:৩০ – ১১:৩০"],
+    //     seatLimit: "প্রতি ব্যাচে সর্বোচ্চ ১৫ জন",
+    //     features: [
+    //         "মাইক্রোসফট অফিস, ইন্টারনেট ও ডিজিটাল লিটারেসি",
+    //         "গণিত অলিম্পিয়াড পাজল ও ব্রেইন টিজার সমাধান",
+    //         "পাবলিক স্পিকিং ও প্রেজেন্টেশন স্কিল চর্চা",
+    //         "বাস্তব জীবনের সমস্যা নিয়ে দলগত প্রজেক্ট তৈরি",
+    //     ],
+    // },
 ];
 
 const faqs = [
@@ -141,9 +141,9 @@ export default function ProgramsPageClient() {
             : detailedPrograms.filter((p) => p.category === filter);
 
     return (
-        <div className="space-y-16">
+        <div className="space-y-8 md:space-y-16">
             {/* Category Filter Bar */}
-            <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-line">
+            <div className="flex flex-wrap items-center justify-between gap-4">
                 <div className="inline-flex p-1.5 rounded-xl bg-surface border border-line">
                     <button
                         type="button"
@@ -176,10 +176,6 @@ export default function ProgramsPageClient() {
                         আইসিটি ও স্কিল
                     </button>
                 </div>
-
-                <p className="text-xs sm:text-sm text-muted">
-                    বানারীপাড়া ক্যাম্পাস • নতুন সেশনের আসন সীমিত
-                </p>
             </div>
 
             {/* Detailed Program Cards */}
@@ -211,7 +207,7 @@ export default function ProgramsPageClient() {
                                         </span>
                                     </div>
 
-                                    <div className="flex items-start gap-3.5">
+                                    <div className="flex flex-col items-start gap-3.5">
                                         <div className="w-11 h-11 rounded-xl bg-paper border border-line flex items-center justify-center text-navy shrink-0 mt-1">
                                             <Icon className="w-5 h-5" />
                                         </div>

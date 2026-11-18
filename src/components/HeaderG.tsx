@@ -8,7 +8,7 @@ import Image from "next/image";
 
 const navLinks = [
     { name: "হোম", href: "/" },
-    { name: "আমাদের দর্শন", href: "/about" },
+    { name: "আমাদের সম্পর্কে", href: "/about" },
     { name: "ব্যাচ", href: "/batch" },
     // { name: "রিসোর্স", href: "/resources" },
     { name: "নোটিশ", href: "/notices" },
@@ -51,9 +51,9 @@ export default function HeaderG() {
                     {/* Brand Logo & Wordmark */}
                     <Link href="/" className="flex items-center gap-3 group">
                         <Image
-                            src="/images/logo-bn-hr.png"
+                            src="/images/logo-bn-h.png"
                             alt="Logo"
-                            width={200}
+                            width={180}
                             height={40}
                         />
                     </Link>

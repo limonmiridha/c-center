@@ -14,20 +14,20 @@ export default function Hero() {
                 }}
             />
 
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
 
                     {/* Left Column: Core Philosophy & CTA (7 Columns) */}
-                    <div className="lg:col-span-7 space-y-7">
+                    <div className="lg:col-span-7 space-y-4 md:space-y-7">
                         {/* Editorial Pill Badge */}
                         <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-surface border border-line text-xs sm:text-sm font-medium text-navy">
                             <span className="w-2 h-2 rounded-full bg-green" />
-                            <span>বানারীপাড়া, বরিশাল — ২০২৬ একাডেমিক সেশন</span>
+                            <span>বানারীপাড়া, বরিশাল — ২০২৭ একাডেমিক সেশন</span>
                         </div>
 
                         {/* Main Headline */}
                         <h1 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-navy tracking-tight leading-[1.22]">
-                            শুধু ভালো ফলাফল নয়,{" "}
+                            ভালো ফলাফলের সাথে,{" "}
                             <span className="relative inline-block">
                                 <span className="relative z-10">কৌতূহল ও সৃজনশীলতায়</span>
                                 <span className="absolute bottom-1 left-0 w-full h-3 bg-gold/40 -z-0 rounded-xs" />
@@ -51,7 +51,7 @@ export default function Hero() {
                             </Link>
 
                             <Link
-                                href="/programs"
+                                href="/batch"
                                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-surface hover:bg-paper text-navy font-semibold text-base border border-line transition-colors"
                             >
                                 <span>আমাদের কোর্স ও ব্যাচসমূহ</span>
@@ -142,7 +142,7 @@ export default function Hero() {
                             <div className="pt-2 flex items-center justify-between text-xs text-muted">
                                 <span>ষষ্ঠ থেকে দ্বাদশ শ্রেণি এবং আইসিটি স্পেশাল ব্যাচ</span>
                                 <Link
-                                    href="/programs"
+                                    href="/batch"
                                     className="font-semibold text-navy hover:text-green underline underline-offset-4"
                                 >
                                     বিস্তারিত দেখুন
