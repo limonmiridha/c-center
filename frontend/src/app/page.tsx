@@ -16,7 +16,7 @@ export default function Home() {
       <BatchSection />
       <PhilosophySection />
       <EarlyBirdOfferSection />
-      <NoticesAndResources />
+      {/* <NoticesAndResources /> */}
       <Suspense
         fallback={
           <div className="bg-surface border border-line rounded-2xl p-10 text-center text-sm text-muted">

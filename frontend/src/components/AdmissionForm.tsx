@@ -11,12 +11,14 @@ import {
     Send,
     RotateCcw,
     ShieldCheck,
+    Gift,
+    AlertCircle,
 } from "lucide-react";
 
 const batchOptions = [
     {
         id: "junior-foundation",
-        label: "জুনিয়র ফাউন্ডেশন ও মেধা বিকাশ ব্যাচ (৬ষ্ঠ — ৮ম শ্রেণি)",
+        label: "জুনিয়র ফাউন্ডেশন ও মেধা বিকাশ ব্যাচ (৬ষ্ঠ — ৮ম শ্রেণি)",
     },
     {
         id: "ssc-science-academic",
@@ -26,12 +28,16 @@ const batchOptions = [
         id: "hsc-ict-special",
         label: "এইচএসসি আইসিটি ও প্রোগ্রামিং ফাউন্ডেশন (১১শ — ১২শ শ্রেণি)",
     },
-
+    {
+        id: "curiosity-stem-club",
+        label: "অন্বেষণ কিউরিওসিটি ও কম্পিউটার বেসিকস (শুক্রবারের ব্যাচ)",
+    },
 ];
 
 export default function AdmissionForm() {
     const searchParams = useSearchParams();
     const programParam = searchParams.get("program");
+    const offerParam = searchParams.get("offer");
 
     const [formData, setFormData] = useState({
         studentName: "",
@@ -43,23 +49,27 @@ export default function AdmissionForm() {
         guardianPhone: "",
         address: "",
         notes: "",
+        offerCode: "",
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [submittedId, setSubmittedId] = useState<string | null>(null);
 
-    // URL থেকে program প্যারামিটার পেলে অটো-ফিল করা
     useEffect(() => {
-        if (programParam) {
-            const matchedBatch = batchOptions.find((b) => b.id === programParam);
-            if (matchedBatch) {
-                setFormData((prev) => ({
-                    ...prev,
-                    selectedBatch: matchedBatch.id,
-                }));
-            }
-        }
-    }, [programParam]);
+        const isBeforeDec15 =
+            new Date() <= new Date("2026-12-15T23:59:59+06:00");
+
+        setFormData((prev) => ({
+            ...prev,
+            selectedBatch:
+                programParam && batchOptions.some((b) => b.id === programParam)
+                    ? programParam
+                    : prev.selectedBatch,
+            offerCode: offerParam || (isBeforeDec15 ? "early-bird-dec15" : ""),
+        }));
+    }, [programParam, offerParam]);
+
 
     const handleChange = (
         e: React.ChangeEvent<
@@ -73,17 +83,40 @@ export default function AdmissionForm() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
+        setErrorMessage(null);
 
-        // এখানে পরবর্তীতে আপনার Backend API বা Database যুক্ত করতে পারবেন
-        await new Promise((resolve) => setTimeout(resolve, 800));
+        try {
+            const apiUrl =
+                process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api/v1";
 
-        const randomTracking = `ONN-${Math.floor(1000 + Math.random() * 9000)}`;
-        setSubmittedId(randomTracking);
-        setIsSubmitting(false);
+            const response = await fetch(`${apiUrl}/admissions`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) {
+                throw new Error("আবেদন জমা দিতে সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।");
+            }
+
+            const result = await response.json();
+            setSubmittedId(result.trackingId || `ONN-${Math.floor(1000 + Math.random() * 9000)}`);
+        } catch (err: unknown) {
+            const msg =
+                err instanceof Error
+                    ? err.message
+                    : "সার্ভারের সাথে সংযোগ স্থাপন করা যায়নি।";
+            setErrorMessage(msg);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const resetForm = () => {
         setSubmittedId(null);
+        setErrorMessage(null);
         setFormData({
             studentName: "",
             studentClass: "",
@@ -94,6 +127,7 @@ export default function AdmissionForm() {
             guardianPhone: "",
             address: "",
             notes: "",
+            offerCode: offerParam || "",
         });
     };
 
@@ -109,16 +143,16 @@ export default function AdmissionForm() {
                 </div>
 
                 <div className="space-y-2">
-                    <span className="inline-block px-3 py-1 rounded-full bg-paper border border-line text-xs font-bold text-navy">
-                        আবেদন আইডি: {submittedId}
+                    <span className="inline-block px-3.5 py-1 rounded-full bg-paper border border-line text-xs font-bold text-navy">
+                        ট্র্যাকিং আইডি: {submittedId}
                     </span>
                     <h3 className="text-2xl font-extrabold text-navy">
-                        আপনার প্রাথমিক ভর্তি আবেদন গৃহীত হয়েছে!
+                        আপনার প্রাথমিক ভর্তি আবেদন গৃহীত হয়েছে!
                     </h3>
                     <p className="text-sm sm:text-base text-muted max-w-lg mx-auto leading-relaxed">
                         ধন্যবাদ, <strong className="text-navy">{formData.studentName}</strong>।{" "}
                         <strong className="text-navy">{chosenBatchLabel}</strong>-এ আপনার
-                        আবেদনটি আমাদের তালিকায় যুক্ত হয়েছে। শীঘ্রই আমাদের প্রতিনিধি প্রদত্ত
+                        আবেদনটি সফলভাবে ডাটাবেজে সংরক্ষিত হয়েছে। শীঘ্রই আমাদের প্রতিনিধি প্রদত্ত
                         নম্বরে যোগাযোগ করবেন।
                     </p>
                 </div>
@@ -128,8 +162,13 @@ export default function AdmissionForm() {
                         <strong>অভিভাবকের মোবাইল:</strong> {formData.guardianPhone}
                     </p>
                     <p>
-                        <strong>পছন্দের সময়:</strong> {formData.preferredShift}
+                        <strong>পছন্দের সময়:</strong> {formData.preferredShift}
                     </p>
+                    {formData.offerCode && (
+                        <p className="text-green font-semibold">
+                            <strong>অফার কোড যুক্ত হয়েছে:</strong> আর্লি বার্ড অফার (১৫ ডিসেম্বর)
+                        </p>
+                    )}
                     <p>
                         <strong>ক্যাম্পাস:</strong> বানারীপাড়া, বরিশাল
                     </p>
@@ -154,6 +193,33 @@ export default function AdmissionForm() {
             onSubmit={handleSubmit}
             className="bg-surface border border-line rounded-2xl p-6 sm:p-10 space-y-8"
         >
+            {/* Early Bird Offer Banner if active */}
+            {formData.offerCode === "early-bird-dec15" && (
+                <div className="p-4 rounded-xl bg-navy text-white flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-lg bg-gold/20 text-gold flex items-center justify-center shrink-0">
+                            <Gift className="w-5 h-5" />
+                        </div>
+                        <div className="text-xs sm:text-sm">
+                            <p className="font-bold text-gold">
+                                আর্লি বার্ড অফার সক্রিয় হয়েছে!
+                            </p>
+                            <p className="text-white/80">
+                                ১৫ই ডিসেম্বরের মধ্যে ভর্তি কনফার্ম করলে ভর্তি ফিতে ৪০% ছাড় ও ফ্রি স্টাডি কিট পাবেন।
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Error Alert if API fails */}
+            {errorMessage && (
+                <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm flex items-center gap-2.5">
+                    <AlertCircle className="w-5 h-5 shrink-0" />
+                    <span>{errorMessage}</span>
+                </div>
+            )}
+
             {/* Form Header */}
             <div className="border-b border-line pb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
@@ -167,7 +233,7 @@ export default function AdmissionForm() {
                 {formData.selectedBatch && (
                     <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green/10 text-green text-xs font-bold self-start">
                         <CheckCircle2 className="w-3.5 h-3.5" />
-                        ব্যাচ নির্বাচিত হয়েছে
+                        ব্যাচ নির্বাচিত হয়েছে
                     </span>
                 )}
             </div>
@@ -211,7 +277,7 @@ export default function AdmissionForm() {
                             htmlFor="preferredShift"
                             className="block text-sm font-semibold text-navy mb-1.5"
                         >
-                            সুবিধাজনক সময় (Shift)
+                            সুবিধাজনক সময় (Shift)
                         </label>
                         <select
                             id="preferredShift"
@@ -229,6 +295,7 @@ export default function AdmissionForm() {
                 </div>
             </div>
 
+            {/* Section 2: Student Information */}
             {/* Section 2: Student Information */}
             <div className="space-y-4 pt-2 border-t border-line">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-green flex items-center gap-2 pt-2">

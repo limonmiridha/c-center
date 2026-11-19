@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import {
     FileCheck2,
@@ -10,39 +10,87 @@ import {
     ArrowUpRight,
 } from "lucide-react";
 
-const batchSeatStatus = [
-    {
-        id: "junior-foundation",
-        name: "জুনিয়র ফাউন্ডেশন ব্যাচ (৬ষ্ঠ — ৮ম শ্রেণি)",
-        totalSeats: 20,
-        filledSeats: 14,
-    },
-    {
-        id: "ssc-science-academic",
-        name: "এসএসসি একাডেমিক ও সৃজনশীল ব্যাচ (৯ম — ১০ম শ্রেণি)",
-        totalSeats: 18,
-        filledSeats: 15,
-    },
-    {
-        id: "hsc-ict-special",
-        name: "এইচএসসি আইসিটি ও প্রোগ্রামিং ব্যাচ (১১শ — ১২শ শ্রেণি)",
-        totalSeats: 15,
-        filledSeats: 11,
-    },
-    {
-        id: "curiosity-stem-club",
-        name: "অন্বেষণ কিউরিওসিটি ও কম্পিউটার বেসিকস (শুক্রবার)",
-        totalSeats: 15,
-        filledSeats: 9,
-    },
-];
+interface BatchStat {
+    slug: string;
+    title: string;
+    targetGroup: string;
+    totalSeats: number;
+    filledSeats: number;
+}
+
+interface StatsResponse {
+    totalFormSubmissions: number;
+    confirmedEnrollments: number;
+    totalSeats: number;
+    remainingSeats: number;
+    batches: BatchStat[];
+}
+
+// ব্যাকএন্ড লোড হওয়ার আগ পর্যন্ত বা অফলাইন থাকলে দেখানোর জন্য ফলব্যাক ডেটা
+const fallbackStats: StatsResponse = {
+    totalFormSubmissions: 84,
+    confirmedEnrollments: 49,
+    totalSeats: 68,
+    remainingSeats: 19,
+    batches: [
+        {
+            slug: "junior-foundation",
+            title: "জুনিয়র ফাউন্ডেশন ও মেধা বিকাশ ব্যাচ",
+            targetGroup: "৬ষ্ঠ — ৮ম শ্রেণি",
+            totalSeats: 20,
+            filledSeats: 14,
+        },
+        {
+            slug: "ssc-science-academic",
+            title: "এসএসসি একাডেমিক ও সৃজনশীল ব্যাচ",
+            targetGroup: "৯ম — ১০ম শ্রেণি",
+            totalSeats: 18,
+            filledSeats: 15,
+        },
+        {
+            slug: "hsc-ict-special",
+            title: "এইচএসসি আইসিটি ও প্রোগ্রামিং ফাউন্ডেশন",
+            targetGroup: "১১শ — ১২শ শ্রেণি",
+            totalSeats: 15,
+            filledSeats: 11,
+        },
+        {
+            slug: "curiosity-stem-club",
+            title: "অন্বেষণ কিউরিওসিটি ও কম্পিউটার বেসিকস",
+            targetGroup: "শুক্রবারের ব্যাচ",
+            totalSeats: 15,
+            filledSeats: 9,
+        },
+    ],
+};
 
 export default function AdmissionStatsSection() {
-    // পরবর্তীতে এগুলো ডাটাবেজ থেকে ডাইনামিক করতে পারবেন
-    const totalFormSubmissions = 84;
-    const confirmedEnrollments = 49;
-    const totalSeats = 68;
-    const remainingSeats = totalSeats - confirmedEnrollments;
+    const [stats, setStats] = useState<StatsResponse>(fallbackStats);
+    const [isLive, setIsLive] = useState(false);
+
+    useEffect(() => {
+        const fetchLiveStats = async () => {
+            try {
+                const apiUrl =
+                    process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api/v1";
+                const res = await fetch(`${apiUrl}/admissions/stats`, {
+                    cache: "no-store",
+                });
+
+                if (res.ok) {
+                    const data: StatsResponse = await res.json();
+                    if (data && Array.isArray(data.batches)) {
+                        setStats(data);
+                        setIsLive(true);
+                    }
+                }
+            } catch (error) {
+                console.error("Failed to fetch live admission stats:", error);
+            }
+        };
+
+        fetchLiveStats();
+    }, []);
 
     return (
         <section className="py-16 sm:py-20 bg-surface border-b border-line">
@@ -52,7 +100,11 @@ export default function AdmissionStatsSection() {
                     <div className="space-y-2.5 max-w-2xl">
                         <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-green">
                             <span className="w-2 h-2 rounded-full bg-green animate-pulse" />
-                            <span>নতুন সেশন ভর্তি আপডেট</span>
+                            <span>
+                                {isLive
+                                    ? "লাইভ ভর্তি ও আসন আপডেট"
+                                    : "নতুন সেশন ভর্তি আপডেট"}
+                            </span>
                         </div>
                         <h2 className="text-2xl sm:text-3xl font-extrabold text-navy tracking-tight">
                             চলমান ভর্তি ও ব্যাচভিত্তিক আসন পরিস্থিতি
@@ -78,7 +130,7 @@ export default function AdmissionStatsSection() {
                             <FileCheck2 className="w-5 h-5" />
                         </div>
                         <p className="text-3xl sm:text-4xl font-extrabold text-navy">
-                            {totalFormSubmissions}
+                            {stats.totalFormSubmissions}
                             <span className="text-lg text-gold">+</span>
                         </p>
                         <p className="text-xs sm:text-sm font-semibold text-muted">
@@ -91,7 +143,7 @@ export default function AdmissionStatsSection() {
                             <UserCheck className="w-5 h-5" />
                         </div>
                         <p className="text-3xl sm:text-4xl font-extrabold text-navy">
-                            {confirmedEnrollments}
+                            {stats.confirmedEnrollments}
                             <span className="text-base font-bold text-green ml-1">জন</span>
                         </p>
                         <p className="text-xs sm:text-sm font-semibold text-muted">
@@ -104,7 +156,7 @@ export default function AdmissionStatsSection() {
                             <Sparkles className="w-5 h-5" />
                         </div>
                         <p className="text-3xl sm:text-4xl font-extrabold text-navy">
-                            {remainingSeats}
+                            {stats.remainingSeats}
                             <span className="text-base font-bold text-navy/70 ml-1">টি</span>
                         </p>
                         <p className="text-xs sm:text-sm font-semibold text-muted">
@@ -133,27 +185,28 @@ export default function AdmissionStatsSection() {
                             ব্যাচ অনুযায়ী আসন প্রাপ্যতা (Seat Availability)
                         </h3>
                         <span className="text-xs font-medium text-muted">
-                            সর্বশেষ হালনাগাদ: আজ
+                            সর্বশেষ হালনাগাদ: রিয়েল-টাইম
                         </span>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {batchSeatStatus.map((batch) => {
-                            const available = batch.totalSeats - batch.filledSeats;
-                            const percentage = Math.round(
-                                (batch.filledSeats / batch.totalSeats) * 100
+                        {stats.batches.map((batch) => {
+                            const available = Math.max(0, batch.totalSeats - batch.filledSeats);
+                            const percentage = Math.min(
+                                100,
+                                Math.round((batch.filledSeats / batch.totalSeats) * 100)
                             );
                             const isAlmostFull = available <= 4;
 
                             return (
                                 <div
-                                    key={batch.id}
+                                    key={batch.slug}
                                     className="p-4 sm:p-5 rounded-xl bg-surface border border-line space-y-3"
                                 >
                                     <div className="flex items-start justify-between gap-3">
                                         <div>
                                             <h4 className="text-sm sm:text-base font-bold text-navy">
-                                                {batch.name}
+                                                {batch.title} ({batch.targetGroup})
                                             </h4>
                                             <p className="text-xs text-muted mt-0.5">
                                                 মোট আসন: {batch.totalSeats}টি • ভর্তি হয়েছে:{" "}
@@ -163,15 +216,15 @@ export default function AdmissionStatsSection() {
 
                                         <span
                                             className={`shrink-0 px-2.5 py-1 rounded-md text-xs font-bold ${isAlmostFull
-                                                ? "bg-gold/25 text-navy border border-gold/40"
-                                                : "bg-green/15 text-green"
+                                                    ? "bg-gold/25 text-navy border border-gold/40"
+                                                    : "bg-green/15 text-green"
                                                 }`}
                                         >
-                                            {available}টি আসন খালি
+                                            {available > 0 ? `${available}টি আসন খালি` : "আসন পূর্ণ"}
                                         </span>
                                     </div>
 
-                                    {/* Clean Progress Bar */}
+                                    {/* Progress Bar */}
                                     <div className="w-full h-2.5 bg-paper rounded-full overflow-hidden border border-line/60">
                                         <div
                                             className={`h-full rounded-full transition-all duration-500 ${isAlmostFull ? "bg-gold" : "bg-green"
@@ -185,7 +238,7 @@ export default function AdmissionStatsSection() {
                                             {percentage}% আসন পূর্ণ হয়েছে
                                         </span>
                                         <Link
-                                            href={`/admission?program=${batch.id}`}
+                                            href={`/admission?program=${batch.slug}`}
                                             className="font-bold text-navy hover:text-green underline underline-offset-4"
                                         >
                                             আসন বুক করুন
