@@ -77,7 +77,7 @@ const detailedPrograms: DetailedProgram[] = [
         category: "skill",
         badge: "স্পেশাল প্রোগ্রাম",
         badgeStyle: "bg-green/15 text-green border-green/25",
-        title: "এইচএসসি আইসিটি ও প্রোগ্রামিং ফাউন্ডেশন",
+        title: "এইচএসসি আইসিটি",
         targetClass: "একাদশ — দ্বাদশ শ্রেণি (সকল বিভাগ)",
         subjects: "তথ্য ও যোগাযোগ প্রযুক্তি (সম্পূর্ণ বই ও প্র্যাকটিক্যাল)",
         description:
