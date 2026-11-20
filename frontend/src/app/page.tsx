@@ -14,7 +14,7 @@ export default function Home() {
       <Hero />
       <AdmissionStatsSection />
       <BatchSection />
-      <PhilosophySection />
+      {/* <PhilosophySection /> */}
       <EarlyBirdOfferSection />
       {/* <NoticesAndResources /> */}
       <Suspense
@@ -27,7 +27,7 @@ export default function Home() {
 
         <AdmissionForm />
       </Suspense>
-      <ContactSection />
+      {/* <ContactSection /> */}
     </div>
   );
 }

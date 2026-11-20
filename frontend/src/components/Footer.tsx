@@ -80,11 +80,11 @@ export default function Footer() {
                                     প্রোগ্রাম ও ব্যাচসমূহ
                                 </Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link href="/#notices" className="hover:text-white transition-colors">
                                     নোটিশ বোর্ড ও রিসোর্স
                                 </Link>
-                            </li>
+                            </li> */}
                             <li>
                                 <Link href="/admission" className="hover:text-white transition-colors">
                                     ভর্তি আবেদন ফর্ম
@@ -105,17 +105,17 @@ export default function Footer() {
                             </li>
                             <li className="flex items-center gap-2.5">
                                 <Phone className="w-4 h-4 text-gold shrink-0" />
-                                <a href="tel:+8801700000000" className="hover:text-white">
-                                    +৮৮০ ১৭০০-০০০০০০
+                                <a href="tel:+8801790153927" className="hover:text-white">
+                                    +৮৮০ ১৭৯০-১৫৩৯২৭
                                 </a>
                             </li>
                             <li className="flex items-center gap-2.5">
                                 <Mail className="w-4 h-4 text-gold shrink-0" />
                                 <a
-                                    href="mailto:info@onneshonlearning.com"
+                                    href="mailto:limonmiridha100@gmail.com"
                                     className="hover:text-white"
                                 >
-                                    info@onneshonlearning.com
+                                    limonmiridha100@gmail.com
                                 </a>
                             </li>
                         </ul>

@@ -169,7 +169,7 @@ export default function AdmissionStatsSection() {
                             <Users className="w-5 h-5" />
                         </div>
                         <p className="text-3xl sm:text-4xl font-extrabold text-navy">
-                            ১৫–২০
+                            ৩০
                             <span className="text-base font-bold text-muted ml-1">জন</span>
                         </p>
                         <p className="text-xs sm:text-sm font-semibold text-muted">
@@ -216,8 +216,8 @@ export default function AdmissionStatsSection() {
 
                                         <span
                                             className={`shrink-0 px-2.5 py-1 rounded-md text-xs font-bold ${isAlmostFull
-                                                    ? "bg-gold/25 text-navy border border-gold/40"
-                                                    : "bg-green/15 text-green"
+                                                ? "bg-gold/25 text-navy border border-gold/40"
+                                                : "bg-green/15 text-green"
                                                 }`}
                                         >
                                             {available > 0 ? `${available}টি আসন খালি` : "আসন পূর্ণ"}

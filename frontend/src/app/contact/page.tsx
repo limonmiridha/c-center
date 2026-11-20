@@ -58,13 +58,13 @@ export default function ContactPage() {
                             <h2 className="text-sm font-bold text-navy">ফোন ও হোয়াটসঅ্যাপ</h2>
                             <p className="text-xs sm:text-sm text-muted mt-1">
                                 <a
-                                    href="tel:+8801700000000"
+                                    href="tel:+8801790153927"
                                     className="hover:text-navy font-semibold"
                                 >
-                                    +৮৮০ ১৭০০-০০০০০০
+                                    +৮৮০ ১৭৯০-১৫৩৯২৭
                                 </a>
                             </p>
-                            <p className="text-xs text-muted mt-0.5">সকাল ৯টা – রাত ৯টা</p>
+                            <p className="text-xs text-muted mt-0.5">সকাল ১০টা – রাত ৮টা</p>
                         </div>
                     </div>
 
@@ -75,10 +75,7 @@ export default function ContactPage() {
                         <div>
                             <h2 className="text-sm font-bold text-navy">অফিস সময়সূচি</h2>
                             <p className="text-xs sm:text-sm text-muted mt-1">
-                                শনি – বৃহস্পতি: সকাল ৯:০০ – রাত ৮:০০
-                            </p>
-                            <p className="text-xs text-green font-medium mt-0.5">
-                                শুক্রবার: স্পেশাল সেশন খোলা
+                                শনি – বৃহস্পতি: সকাল ৭:০০ – রাত ৮:০০
                             </p>
                         </div>
                     </div>
@@ -91,10 +88,10 @@ export default function ContactPage() {
                             <h2 className="text-sm font-bold text-navy">ইমেইল ঠিকানা</h2>
                             <p className="text-xs sm:text-sm text-muted mt-1 break-all">
                                 <a
-                                    href="mailto:info@onneshonlearning.com"
+                                    href="mailto:limonmiridha100@gmail.com"
                                     className="hover:text-navy font-medium"
                                 >
-                                    info@onneshonlearning.com
+                                    limonmiridha100@gmail.com
                                 </a>
                             </p>
                         </div>
@@ -102,8 +99,8 @@ export default function ContactPage() {
                 </div>
 
                 {/* Main 12-Column Grid: Inquiry Form + Google Map */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-                    {/* Left 6 Columns: Contact Form */}
+                {/* <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                    
                     <div className="lg:col-span-6 bg-surface border border-line rounded-2xl p-6 sm:p-8 space-y-5">
                         <div className="border-b border-line pb-4">
                             <h2 className="text-xl font-extrabold text-navy">
@@ -117,7 +114,7 @@ export default function ContactPage() {
                         <ContactFormClient />
                     </div>
 
-                    {/* Right 6 Columns: Banaripara Google Map */}
+                
                     <div className="lg:col-span-6 bg-surface border border-line rounded-2xl p-4 flex flex-col justify-between min-h-[420px]">
                         <div className="relative w-full h-full min-h-[360px] rounded-xl overflow-hidden bg-paper">
                             <iframe
@@ -142,7 +139,7 @@ export default function ContactPage() {
                             </a>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 {/* Bottom Admission Banner */}
                 <div className="bg-navy text-white rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">

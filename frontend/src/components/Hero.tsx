@@ -76,7 +76,7 @@ export default function Hero() {
                     </div>
 
                     {/* Right Column: Structured Academic Bento Card (5 Columns) */}
-                    <div className="lg:col-span-5">
+                    <div className="lg:col-span-5 max-md:hidden">
                         <div className="bg-surface border border-line rounded-2xl p-6 sm:p-8 shadow-[0_8px_30px_rgb(23,59,86,0.04)] space-y-6">
                             {/* Top Card Header */}
                             <div className="flex items-center justify-between border-b border-line pb-4">
