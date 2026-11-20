@@ -57,7 +57,7 @@ const detailedPrograms: DetailedProgram[] = [
         category: "academic",
         badge: "বোর্ড প্রস্তুতি",
         badgeStyle: "bg-navy/10 text-navy border-navy/20",
-        title: "এসএসসি একাডেমিক ও সৃজনশীল ব্যাচ",
+        title: "এসএসসি একাডেমিক",
         targetClass: "৯ম — ১০ম শ্রেণি (বিজ্ঞান ও সাধারণ)",
         subjects: "সাধারণ গণিত, উচ্চতর গণিত, পদার্থবিজ্ঞান, রসায়ন ও জীববিজ্ঞান",
         description:
